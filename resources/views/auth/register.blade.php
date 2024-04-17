@@ -312,6 +312,85 @@
             
             newModal.show();
         })();
+
+
+        if (document.getElementById('choices-year')) {
+            var year = document.getElementById('choices-year');
+            setTimeout(function() {
+                const example = new Choices(year);
+            }, 1);
+
+            for (y = 1900; y <= 2023; y++) {
+                var optn = document.createElement("OPTION");
+                optn.text = y;
+                optn.value = y;
+                if (selectedYear > 0) {
+                    if (y == selectedYear) {
+                        optn.selected = true;
+                    }
+                }
+
+                year.options.add(optn);
+            }
+        }
+
+        if (document.getElementById('choices-day')) {
+            var day = document.getElementById('choices-day');
+            setTimeout(function() {
+                const example = new Choices(day);
+            }, 1);
+
+
+            for (y = 1; y <= 31; y++) {
+                var optn = document.createElement("OPTION");
+                optn.text = y;
+                optn.value = y;
+
+                if (selectedDay > 0) {
+                    if (y == selectedDay) {
+                        optn.selected = true;
+                    }
+                }
+
+                day.options.add(optn);
+            }
+
+        }
+
+        if (document.getElementById('choices-month')) {
+            var month = document.getElementById('choices-month');
+            setTimeout(function() {
+                const example = new Choices(month);
+            }, 1);
+
+            var d = new Date();
+            var monthArray = new Array();
+            monthArray[0] = "Enero";
+            monthArray[1] = "Febrero";
+            monthArray[2] = "Marzo";
+            monthArray[3] = "Abril";
+            monthArray[4] = "Mayo";
+            monthArray[5] = "Junio";
+            monthArray[6] = "Julio";
+            monthArray[7] = "Augosto";
+            monthArray[8] = "Septiembre";
+            monthArray[9] = "Octubre";
+            monthArray[10] = "Noviembre";
+            monthArray[11] = "Deciembre";
+            for (m = 0; m <= 11; m++) {
+                var optn = document.createElement("OPTION");
+                optn.text = monthArray[m];
+                // server side month start from one
+                optn.value = (m + 1);
+                // if june selected
+                if (selectedMonth > 0) {
+                    if (optn.value == selectedMonth) {
+                        optn.selected = true;
+                    }
+                }
+                month.options.add(optn);
+            }
+        }
     </script>
 
 @endpush
